@@ -1,9 +1,13 @@
 package com.example.ano.daily;
 
+
+import org.litepal.LitePal;
+import org.litepal.crud.LitePalSupport;
+
 import java.lang.invoke.VolatileCallSite;
 import java.util.List;
 
-public class Artical {
+public class Artical extends LitePalSupport {
     private String title;
     private String authour;
     private List<String> content;

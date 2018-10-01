@@ -1,5 +1,7 @@
 package com.example.ano.daily;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
@@ -17,9 +19,11 @@ import android.support.v7.widget.Toolbar;
 import org.jsoup.*;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
+import org.jsoup.helper.StringUtil;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.litepal.LitePal;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView author;
     private TextView content;
     private Artical at;
+    private SQLiteDatabase db;
+    private List<String> list;
+    private static String context="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
         title=(TextView)findViewById(R.id.at_title);
         author=(TextView)findViewById(R.id.at_author);
         content=(TextView)findViewById(R.id.at_content);
+
+        //using LitePal to save the book
+        LitePal.initialize(this);
 
         //set ToolBar
         Toolbar toolbar=(Toolbar)findViewById(R.id.tool_bar);
@@ -72,9 +82,14 @@ public class MainActivity extends AppCompatActivity {
             super.handleMessage(msg);
             if (msg.what==1)
             {
+                list=at.getContent();
+                for(int i=0;i<list.size();i++)
+                {
+                    context=context+"    "+" "+ list.get(i) +"\n\n";
+                }
                 title.setText(at.getTitle());
                 author.setText(at.getAuthour());
-                content.setText(at.getContent().toString());
+                content.setText(context);
             }
         }
     };
@@ -114,6 +129,9 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
+            case R.id.music:
+                Intent intent=new Intent(this,PlayActivity.class);
+                startActivity(intent);
         }
         return true;
     }

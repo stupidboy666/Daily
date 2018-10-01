@@ -25,15 +25,16 @@ public class ParseWeb {
             Elements select1=read_con.select("p.article_author");
             String author = select1.first().text();
             at.setAuthour(author);
-            Elements select = read_con.select("div.article_text");
+            Elements select = read_con.select("div.article_text>p");
             for (Element ele : select) {
-                String p = ele.getElementsByTag("p").text();
+                String p = ele.text();
                 con.add(p);
             }
             at.setContent(con);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        at.save();
         return at;
     }
 }

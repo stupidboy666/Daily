@@ -6,6 +6,11 @@
         android:id="@+id/more"
         android:icon="@drawable/ic_settings"
         android:title="More"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/music"
+        android:icon="@drawable/ic_muxic"
+        android:title="Music"
         app:showAsAction="always"/>
 
 </menu>
