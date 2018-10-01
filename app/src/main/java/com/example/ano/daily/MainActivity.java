@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView author;
     private TextView content;
     private Artical at;
-    private SQLiteDatabase db;
     private List<String> list;
     private static String context="";
 
@@ -85,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 list=at.getContent();
                 for(int i=0;i<list.size();i++)
                 {
-                    context=context+"    "+" "+ list.get(i) +"\n\n";
+                    context=context+"  "+ list.get(i) +"\n\n";
                 }
                 title.setText(at.getTitle());
                 author.setText(at.getAuthour());

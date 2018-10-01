@@ -8,9 +8,9 @@ import java.lang.invoke.VolatileCallSite;
 import java.util.List;
 
 public class Artical extends LitePalSupport {
-    private String title;
-    private String authour;
-    private List<String> content;
+    public String title;
+    public String authour;
+    public List<String> content;
 
     public Artical(){
     }

@@ -9,7 +9,7 @@
         app:showAsAction="never"/>
     <item
         android:id="@+id/music"
-        android:icon="@drawable/ic_muxic"
+        android:icon="@drawable/music"
         android:title="Music"
         app:showAsAction="always"/>
 
